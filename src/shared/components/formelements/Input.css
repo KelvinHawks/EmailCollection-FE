@@ -1,0 +1,13 @@
+.form-control input,
+.form-control textarea {
+  width: 200px;
+  font: inherit;
+  border: 1px solid #242424;
+  padding: 5px 12px;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+  outline: none;
+  border-color: #510077;
+}

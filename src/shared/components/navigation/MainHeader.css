@@ -1,0 +1,11 @@
+.main__header {
+  background-color: #5e5e5e;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 500px) {
+  .main__header {
+    height: 4rem;
+  }
+}
