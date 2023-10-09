@@ -28,7 +28,7 @@
   font-size: 28px;
   color: #242424;
 }
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .content-page {
     line-height: 1.5rem;
     width: 80%;

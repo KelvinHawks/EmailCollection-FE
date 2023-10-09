@@ -60,7 +60,7 @@
   flex-direction: column;
   background-color: rgb(148, 248, 148);
 }
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .container__page {
     margin-top: 12px;
     gap: 15px;
