@@ -1,9 +1,10 @@
 .modal {
   z-index: 100;
   position: fixed;
-  top: 28vh;
-  left: 10%;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  width: 50rem;
+  transform: translate(-50%, -50%);
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 8px;
@@ -25,7 +26,7 @@
 }
 
 .modal-enter {
-  transform: translateY(-10rem);
+  transform: translateY(-5rem);
   opacity: 0;
 }
 
@@ -41,7 +42,7 @@
 }
 
 .modal-exit-active {
-  transform: translateY(-10rem);
+  transform: translateY(-5rem);
   opacity: 0;
   transition: all 200ms;
 }
