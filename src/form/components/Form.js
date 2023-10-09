@@ -22,6 +22,10 @@ function Form() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    setFormState({
+      username: "",
+      email: "",
+    });
     try {
       const url = "https://mycandidet.onrender.com/api/users/new/user";
       const response = await axios.post(url, formState);
@@ -30,11 +34,6 @@ function Form() {
     } catch (error) {
       setError(error.response ? error.response.data.message : error.message);
     }
-
-    setFormState({
-      username: "",
-      email: "",
-    });
   };
 
   if (error) {
