@@ -6,7 +6,7 @@ function MainNavigation() {
   return (
     <>
       <MainHeader className="container">
-        <Avatar src=".././images/logo.jpg" alt="logo" />
+        <Avatar src=".././logo.jpg" alt="logo" />
       </MainHeader>
     </>
   );

@@ -34,10 +34,10 @@ function TopHeader() {
         footer={<Button onClick={closeContactModal}>Close</Button>}
         onCancel={closeContactModal}
       >
-        <div>
-          <h2>Contact Us</h2>
+        <div className="email__div">
+          <h2>Email Us</h2>
 
-          <p>Tell:0793895180/0787646041</p>
+          <p>mycandidet@gmail.com</p>
         </div>
       </Modal>
       <Modal
@@ -46,16 +46,12 @@ function TopHeader() {
         footer={<Button onClick={closeAboutModal}>Close</Button>}
         onCancel={closeAboutModal}
       >
-        <div>
+        <div className="about_p">
           <p>
-            Welcome to <b>MyCandidet</b> We will give you analytics on the
-            candidates you elected to office and how they are doing so far,
-            reforms they have made, contributions , legislations proposed ,
-            completed , votes on various bills in parliament, their constituents
-            development and more. Who needs to be re-elected and who does not.
-            Stay updated everyday on such crucial information in order to make
-            an informed decision come the general election.{" "}
-            <b>Subscribe Now to MyCandidet for FREE</b>
+            MyCandidet is a subscription newsletter that gets you updated on
+            Legislative information from both houses of parliament through a
+            newsletter that you will read within 2 minutes delivered to your
+            Email EVERY SATURDAY at 7am. Subscribe to MyCandidet now. For Free.
           </p>
         </div>
       </Modal>

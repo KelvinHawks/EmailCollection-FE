@@ -1,6 +1,9 @@
 .footer-page {
   margin-top: 50px;
   display: flex;
+  /* position: fixed;
+  left: 0;
+  bottom: 0; */
   flex-direction: column;
   gap: 15px;
   width: 100%;
@@ -12,10 +15,17 @@
 .footer-page h3 {
   color: red;
 }
+.fa-brands {
+  font-size: 28px;
+  color: #fff;
+}
+
 @media (max-width: 768px) {
   .footer-page {
     gap: 10px;
-    height: 4rem;
+    min-height: 4rem;
     margin-top: 12px;
+    padding: 3px;
+    gap: 4px;
   }
 }

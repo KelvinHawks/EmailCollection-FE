@@ -1,0 +1,8 @@
+.cardList ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+}

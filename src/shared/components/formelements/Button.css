@@ -2,8 +2,8 @@
   padding: 10px 20px;
   border-radius: 0;
   margin: 10px;
-  background-color: #333;
-  color: #fff;
+  background-color: #e3e3e3;
+  color: #333;
   border: none;
   cursor: pointer;
 }
@@ -14,5 +14,12 @@
 
 .button:hover,
 .button:active {
-  background: #161616;
+  background: #fa2929;
+  transition: 0.5s;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .button {
+    padding: 7px 7px;
+  }
 }

@@ -4,9 +4,12 @@ import Button from "../../shared/components/formelements/Button";
 import "./Form.css";
 //import { useForm } from "../../shared/hooks/form-hook";
 import axios from "axios";
-function Form() {
+import LoadingSpinner from "../../shared/UIelements/LoadingSpinner";
+function Form({ setMessage }) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [isLoading, setIsLoading] = useState();
+
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -22,18 +25,23 @@ function Form() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    setFormState({
-      username: "",
-      email: "",
-    });
     try {
+      setIsLoading(true);
       const url = "https://mycandidet.onrender.com/api/users/new/user";
       const response = await axios.post(url, formState);
       //console.log(response);
       setSuccess(response.data.message);
+      setIsLoading(false);
+      setMessage(true);
     } catch (error) {
       setError(error.response ? error.response.data.message : error.message);
+      setIsLoading(false);
     }
+
+    setFormState({
+      username: "",
+      email: "",
+    });
   };
 
   if (error) {
@@ -51,6 +59,7 @@ function Form() {
       <h3>
         Subscribe now for <span>FREE</span>
       </h3>
+      {isLoading && <LoadingSpinner asOverlay />}
       {error && <div className="error">{error}</div>}
       {success && <div className="success">{success}</div>}
 
