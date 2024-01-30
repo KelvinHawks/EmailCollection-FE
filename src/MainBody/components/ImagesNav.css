@@ -34,6 +34,22 @@
   border-radius: 3px;
   margin-top: 30px;
 }
+/* modal */
+.submit_Modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  width: 400px;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: 3px 4px 8px rgba(0, 0, 0, 1);
+}
 @media (max-width: 768px) {
   .image-nav__center {
     margin-top: 20px;

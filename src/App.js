@@ -20,7 +20,6 @@ function App() {
   return (
     <div className="App">
       <MainNavigation />
-
       <TopHeader />
       <ImagesNav />
       <Modal
