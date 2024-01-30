@@ -5,11 +5,14 @@ function ImagesNav() {
   return (
     <div className="image-nav__center">
       <div className="content-page">
-        <h4>
-          Get insights on the performance of every candidate you elected to
-          office directly into your inbox, who should be re-elected and who
-          shouldn't.
-        </h4>
+        <p className="main_header">Get 70% off all design books</p>
+        <p className="book_description">
+          When it comes to selecting stellar book-club picks that lead to
+          topical, engaging discussions, Good Morning America knows what they
+          are doing. Their vibrant social community and exciting selections
+          consistently create a fun space for discussions.
+        </p>
+        <button className="shop_button"> ORDER NOW</button>
       </div>
     </div>
   );

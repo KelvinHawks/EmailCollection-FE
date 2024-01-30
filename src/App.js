@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import BlogPage from "./blogs/pages/BlogPage";
-//import ImagesNav from "./MainBody/components/ImagesNav";
+import ImagesNav from "./MainBody/components/ImagesNav";
 //import Form from "./form/components/Form";
 import TopHeader from "./header/TopHeader";
 import Footer from "./shared/components/footer/Footer";
@@ -20,9 +20,9 @@ function App() {
   return (
     <div className="App">
       <MainNavigation />
-      <TopHeader />
-      {/* <ImagesNav /> */}
 
+      <TopHeader />
+      <ImagesNav />
       <Modal
         show={message}
         header="MESSAGE"
