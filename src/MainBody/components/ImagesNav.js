@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 //import ImageItem from "./ImageItem";
+import axios from "axios";
+import LoadingSpinner from "../../shared/UIelements/LoadingSpinner";
 import "./ImagesNav.css";
 function ImagesNav() {
   const [showModal, setShowModal] = useState(false);
@@ -9,6 +11,8 @@ function ImagesNav() {
     location: "",
     quantity: typeof Number,
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [orderSuccess, setOrderSuccess] = useState(null);
   const openModalHandler = () => {
     setShowModal(true);
   };
@@ -22,43 +26,65 @@ function ImagesNav() {
       [name]: value,
     });
   };
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     console.log(formInputs);
+    try {
+      setIsLoading(true);
+      const url = "http://localhost:5001/api/new/order";
+      const response = await axios.post(url, formInputs);
+      setOrderSuccess(response.data.message);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error.response ? error.response.data.message : error.message);
+      setIsLoading(false);
+    }
+    setFormInputs({
+      username: "",
+      phone: "",
+      location: "",
+      quantity: typeof Number,
+    });
   };
+  if (orderSuccess) {
+    setTimeout(() => {
+      setOrderSuccess(null);
+    }, 3000);
+  }
   return (
     <div className="image-nav__center">
       {showModal && (
         <form className="submit_Modal" onSubmit={submitHandler}>
-          <i class="fa-solid fa-xmark" onClick={closeModalHandler}></i>
-
+          <i className="fa-solid fa-xmark" onClick={closeModalHandler}></i>
+          {orderSuccess && <div className="success">{orderSuccess}</div>}
           <p>Please insert the details</p>
+          {isLoading && <LoadingSpinner asOverlay />}
           <input
             name="username"
             type="text"
             placeholder="Name"
-            // value={formInputs.name}
+            value={formInputs.username}
             onChange={inputChangeHandler}
           />
           <input
             name="phone"
             type="text"
             placeholder="Phone Number"
-            //value={formInputs.phone}
+            value={formInputs.phone}
             onChange={inputChangeHandler}
           />
           <input
             name="location"
             type="text"
             placeholder="Deliverly Location"
-            // value={formInputs.location}
+            value={formInputs.location}
             onChange={inputChangeHandler}
           />
           <input
             name="quantity"
             type="number"
             placeholder="Number of Books"
-            // value={formInputs.quantity}
+            value={formInputs.quantity}
             onChange={inputChangeHandler}
           />
 
