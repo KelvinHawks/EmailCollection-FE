@@ -29,7 +29,7 @@ function Form({ setMessage }) {
       setIsLoading(true);
       const url = "https://mycandidet.onrender.com/api/users/new/user";
       const response = await axios.post(url, formState);
-      //console.log(response);
+
       setSuccess(response.data.message);
       setIsLoading(false);
       setMessage(true);

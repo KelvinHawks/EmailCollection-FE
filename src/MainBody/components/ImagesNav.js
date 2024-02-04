@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //import ImageItem from "./ImageItem";
 import axios from "axios";
 import LoadingSpinner from "../../shared/UIelements/LoadingSpinner";
@@ -13,10 +13,20 @@ function ImagesNav() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(null);
+  const [formErrors, setFormErrors] = useState({});
+  const [check, setCheck] = useState(false);
+  // const [isSubmit, setIsSubmit] = useState(false);
   const openModalHandler = () => {
     setShowModal(true);
   };
   const closeModalHandler = () => {
+    setFormInputs({
+      username: "",
+      phone: "",
+      location: "",
+      quantity: typeof Number,
+    });
+    setFormErrors({});
     setShowModal(false);
   };
   const inputChangeHandler = (e) => {
@@ -26,29 +36,65 @@ function ImagesNav() {
       [name]: value,
     });
   };
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    console.log(formInputs);
-    try {
-      setIsLoading(true);
-      const url = "http://localhost:5001/api/new/order";
-      const response = await axios.post(url, formInputs);
-      setOrderSuccess(response.data.message);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.response ? error.response.data.message : error.message);
-      setIsLoading(false);
+  const validate = (values) => {
+    const errors = {};
+    if (!values.username) {
+      errors.username = "Username is required";
     }
-    setFormInputs({
-      username: "",
-      phone: "",
-      location: "",
-      quantity: typeof Number,
-    });
+    if (!values.phone) {
+      errors.phone = "Phone Number is Required";
+    }
+    if (!values.location) {
+      errors.location = "Deliverly location if required";
+    }
+    if (!values.quantity) {
+      errors.quantity = "Number of books required";
+    }
+
+    return errors;
   };
+  // useEffect(() => {
+
+  //   if (Object.keys(formErrors).length > 0) {
+  //     setCheck(true)
+  //   }
+  // }, [formErrors]);
+
+  const submitHandler = async (e) => {
+    console.log(Object.keys(formErrors).length);
+    e.preventDefault();
+    setFormErrors(validate(formInputs));
+    // setIsSubmit(true);
+    if (Object.keys(formErrors).length > 0) {
+      console.log(formInputs);
+    }
+    // try {
+
+    //   setIsLoading(true);
+    //   const url = "http://localhost:5001/api/new/order";
+    //   const response = await axios.post(url, formInputs);
+    //   setOrderSuccess(response.data.message);
+    //   setIsLoading(false);
+    // } catch (error) {
+    //   console.log(error.response ? error.response.data.message : error.message);
+    //   setIsLoading(false);
+    // }
+    // setFormInputs({
+    //   username: "",
+    //   phone: "",
+    //   location: "",
+    //   quantity: typeof Number,
+    // });
+  };
+
   if (orderSuccess) {
     setTimeout(() => {
       setOrderSuccess(null);
+    }, 3000);
+  }
+  if (formErrors.length > 0) {
+    setTimeout(() => {
+      setFormErrors({});
     }, 3000);
   }
   return (
@@ -57,8 +103,9 @@ function ImagesNav() {
         <form className="submit_Modal" onSubmit={submitHandler}>
           <i className="fa-solid fa-xmark" onClick={closeModalHandler}></i>
           {orderSuccess && <div className="success">{orderSuccess}</div>}
-          <p>Please insert the details</p>
+          <p className="insert_title">Please insert the details</p>
           {isLoading && <LoadingSpinner asOverlay />}
+          <p className="error_message">{formErrors.username}</p>
           <input
             name="username"
             type="text"
@@ -66,6 +113,7 @@ function ImagesNav() {
             value={formInputs.username}
             onChange={inputChangeHandler}
           />
+          <p className="error_message">{formErrors.phone}</p>
           <input
             name="phone"
             type="text"
@@ -73,6 +121,7 @@ function ImagesNav() {
             value={formInputs.phone}
             onChange={inputChangeHandler}
           />
+          <p className="error_message">{formErrors.location}</p>
           <input
             name="location"
             type="text"
@@ -80,6 +129,7 @@ function ImagesNav() {
             value={formInputs.location}
             onChange={inputChangeHandler}
           />
+          <p className="error_message">{formErrors.quantity}</p>
           <input
             name="quantity"
             type="number"

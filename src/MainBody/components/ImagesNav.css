@@ -50,9 +50,13 @@
   z-index: 1;
   box-shadow: 3px 4px 8px rgba(0, 0, 0, 1);
 }
-.submit_Modal p {
+.submit_Modal .insert_title {
   margin-bottom: 30px;
   font-size: 15px;
+}
+.submit_Modal .error_message {
+  font-size: 15px;
+  color: red;
 }
 .submit_Modal input {
   margin-bottom: 19px;
