@@ -8,6 +8,7 @@ import Footer from "./shared/components/footer/Footer";
 import Modal from "./shared/UIelements/Modal";
 import Button from "./shared/components/formelements/Button";
 import MainNavigation from "./shared/components/navigation/MainNavigation";
+import Books from "./MainBody/components/Books";
 
 function App() {
   const [message, setMessage] = useState(false);
@@ -22,6 +23,7 @@ function App() {
       <MainNavigation />
       <TopHeader />
       <ImagesNav />
+      <Books />
       <Modal
         show={message}
         header="MESSAGE"

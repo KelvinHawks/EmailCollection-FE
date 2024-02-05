@@ -14,7 +14,7 @@ function ImagesNav() {
   const [isLoading, setIsLoading] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(null);
   const [formErrors, setFormErrors] = useState({});
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(true);
   // const [isSubmit, setIsSubmit] = useState(false);
   const openModalHandler = () => {
     setShowModal(true);
@@ -53,21 +53,15 @@ function ImagesNav() {
 
     return errors;
   };
-  // useEffect(() => {
-
-  //   if (Object.keys(formErrors).length > 0) {
-  //     setCheck(true)
-  //   }
-  // }, [formErrors]);
 
   const submitHandler = async (e) => {
-    console.log(Object.keys(formErrors).length);
     e.preventDefault();
     setFormErrors(validate(formInputs));
     // setIsSubmit(true);
-    if (Object.keys(formErrors).length > 0) {
+    if (Object.keys(formErrors).length === 0) {
       console.log(formInputs);
     }
+
     // try {
 
     //   setIsLoading(true);
@@ -86,7 +80,11 @@ function ImagesNav() {
     //   quantity: typeof Number,
     // });
   };
-
+  // useEffect(() => {
+  //   if (Object.keys(formErrors).length > 0) {
+  //     setCheck(false);
+  //   }
+  // }, [formErrors]);
   if (orderSuccess) {
     setTimeout(() => {
       setOrderSuccess(null);
@@ -141,14 +139,10 @@ function ImagesNav() {
           <button type="submit">Submit</button>
         </form>
       )}
+      <div className="banner_img-main">
+        <img src="../../images/banner.jpg" alt="banner" />
+      </div>
       <div className="content-page">
-        <p className="main_header">Get 70% off all design books</p>
-        <p className="book_description">
-          When it comes to selecting stellar book-club picks that lead to
-          topical, engaging discussions, Good Morning America knows what they
-          are doing. Their vibrant social community and exciting selections
-          consistently create a fun space for discussions.
-        </p>
         <button className="shop_button" onClick={openModalHandler}>
           ORDER NOW
         </button>
