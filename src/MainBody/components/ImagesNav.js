@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 //import ImageItem from "./ImageItem";
 import axios from "axios";
 import LoadingSpinner from "../../shared/UIelements/LoadingSpinner";
@@ -13,9 +13,9 @@ function ImagesNav() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(null);
+  const [orderError, setOrderError] = useState(null);
   const [formErrors, setFormErrors] = useState({});
-  const [check, setCheck] = useState(true);
-  // const [isSubmit, setIsSubmit] = useState(false);
+
   const openModalHandler = () => {
     setShowModal(true);
   };
@@ -36,72 +36,68 @@ function ImagesNav() {
       [name]: value,
     });
   };
-  const validate = (values) => {
-    const errors = {};
-    if (!values.username) {
-      errors.username = "Username is required";
-    }
-    if (!values.phone) {
-      errors.phone = "Phone Number is Required";
-    }
-    if (!values.location) {
-      errors.location = "Deliverly location if required";
-    }
-    if (!values.quantity) {
-      errors.quantity = "Number of books required";
-    }
-
-    return errors;
-  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    setFormErrors(validate(formInputs));
-    // setIsSubmit(true);
-    if (Object.keys(formErrors).length === 0) {
-      console.log(formInputs);
+    const errors = {};
+    if (!formInputs.username) {
+      errors.username = "Username is required";
+    }
+    if (!formInputs.phone) {
+      errors.phone = "Phone Number is Required";
+    }
+    if (!formInputs.location) {
+      errors.location = "Deliverly location is required";
+    }
+    if (formInputs.quantity <= 0) {
+      errors.quantity = "Number of books required";
     }
 
-    // try {
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
 
-    //   setIsLoading(true);
-    //   const url = "http://localhost:5001/api/new/order";
-    //   const response = await axios.post(url, formInputs);
-    //   setOrderSuccess(response.data.message);
-    //   setIsLoading(false);
-    // } catch (error) {
-    //   console.log(error.response ? error.response.data.message : error.message);
-    //   setIsLoading(false);
-    // }
-    // setFormInputs({
-    //   username: "",
-    //   phone: "",
-    //   location: "",
-    //   quantity: typeof Number,
-    // });
+    try {
+      setIsLoading(true);
+      const url = "http://localhost:5001/api/new/order";
+      const response = await axios.post(url, formInputs);
+      setOrderSuccess(response.data.message);
+      setIsLoading(false);
+    } catch (error) {
+      setOrderError(
+        error.response ? error.response.data.message : error.message
+      );
+      setIsLoading(false);
+    }
+    setFormInputs({
+      username: "",
+      phone: "",
+      location: "",
+      quantity: typeof Number,
+    });
+    setFormErrors({});
   };
-  // useEffect(() => {
-  //   if (Object.keys(formErrors).length > 0) {
-  //     setCheck(false);
-  //   }
-  // }, [formErrors]);
+
   if (orderSuccess) {
     setTimeout(() => {
       setOrderSuccess(null);
-    }, 3000);
+    }, 4000);
   }
-  if (formErrors.length > 0) {
+  if (orderError) {
     setTimeout(() => {
-      setFormErrors({});
-    }, 3000);
+      setOrderError(null);
+    }, 4000);
   }
+
   return (
     <div className="image-nav__center">
       {showModal && (
         <form className="submit_Modal" onSubmit={submitHandler}>
           <i className="fa-solid fa-xmark" onClick={closeModalHandler}></i>
-          {orderSuccess && <div className="success">{orderSuccess}</div>}
           <p className="insert_title">Please insert the details</p>
+          {orderSuccess && <p className="success">{orderSuccess}</p>}
+          {orderError && <p className="error">{orderError}</p>}
           {isLoading && <LoadingSpinner asOverlay />}
           <p className="error_message">{formErrors.username}</p>
           <input
