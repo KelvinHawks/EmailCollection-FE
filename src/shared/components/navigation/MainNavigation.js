@@ -6,7 +6,7 @@ function MainNavigation() {
   return (
     <>
       <MainHeader className="container">
-        <h3>MY CANDIDET</h3>
+        <h3>MyCandidet</h3>
       </MainHeader>
     </>
   );

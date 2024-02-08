@@ -52,6 +52,9 @@ function TopHeader() {
             Legislative information from both houses of parliament through a
             newsletter that you will read within 2 minutes delivered to your
             Email EVERY SATURDAY at 7am. Subscribe to MyCandidet now. For Free.
+            <hr />
+            <br></br>To eliminate danger of living life not knowing what MPs and
+            Senators are passing into law to govern you
           </p>
         </div>
       </Modal>

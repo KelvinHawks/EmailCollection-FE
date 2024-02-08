@@ -60,7 +60,7 @@ function ImagesNav() {
 
     try {
       setIsLoading(true);
-      const url = "http://localhost:5001/api/new/order";
+      const url = "https://mycandidet.onrender.com/api/new/order";
       const response = await axios.post(url, formInputs);
       setOrderSuccess(response.data.message);
       setIsLoading(false);
@@ -119,7 +119,7 @@ function ImagesNav() {
           <input
             name="location"
             type="text"
-            placeholder="Deliverly Location"
+            placeholder="Delivery Location"
             value={formInputs.location}
             onChange={inputChangeHandler}
           />
@@ -135,8 +135,9 @@ function ImagesNav() {
           <button type="submit">Submit</button>
         </form>
       )}
+
       <div className="banner_img-main">
-        <img src="../../images/banner.jpg" alt="banner" />
+        <img src="../../images/banner1.jpg" alt="banner" />
       </div>
       <div className="content-page">
         <button className="shop_button" onClick={openModalHandler}>
