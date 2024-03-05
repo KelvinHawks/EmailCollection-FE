@@ -2,6 +2,7 @@
   position: relative;
   margin-top: 50px;
   width: 100%;
+  margin-bottom: 40px;
 }
 
 .content-page {
@@ -56,7 +57,6 @@
   background: red;
   color: #fff;
   border-radius: 3px;
-  margin-top: 15px;
 }
 .fa-solid {
   position: absolute;
@@ -69,11 +69,16 @@
 .banner_img-main {
   width: 80%;
   margin: 0 auto;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.banner_img-main img {
+/* .banner_img-main img {
   width: 100%;
   height: 50vh;
-}
+} */
 .success {
   color: green;
 }
@@ -83,7 +88,6 @@
 @media (max-width: 768px) {
   .image-nav__center {
     margin-top: 20px;
-    min-height: 50vh;
     display: flex;
     flex-direction: column;
   }
@@ -95,6 +99,9 @@
   }
   .banner_img-main {
     width: 100%;
+    height: 25vh;
+    padding: 12px;
+    text-align: center;
   }
   .banner_img-main img {
     width: 100%;
@@ -103,5 +110,8 @@
   .submit_Modal {
     width: 300px;
     height: 400px;
+  }
+  .banner_img-main h1 {
+    font-size: 20px;
   }
 }

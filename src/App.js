@@ -22,8 +22,9 @@ function App() {
     <div className="App">
       <MainNavigation />
       <TopHeader />
-      <ImagesNav />
+
       <Books />
+      <ImagesNav />
       <Modal
         show={message}
         header="MESSAGE"

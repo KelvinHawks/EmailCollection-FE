@@ -8,9 +8,9 @@ function Books() {
         <img src="../../images/banner.jpg" alt="banner" />
       </div> */}
       <div className="small_img">
-        <img src="../../images/img1.jpg" alt="img1" />
+        <img src="../../images/img4.jpg" alt="img1" />
 
-        <img src="../../images/img2.jpg" alt="img2" />
+        <img src="../../images/img3second.jpg" alt="img3second" />
       </div>
     </div>
   );

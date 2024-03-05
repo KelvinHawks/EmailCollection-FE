@@ -135,9 +135,8 @@ function ImagesNav() {
           <button type="submit">Submit</button>
         </form>
       )}
-
-      <div className="banner_img-main">
-        <img src="../../images/banner1.jpg" alt="banner" />
+      <div className="price_div">
+        <h1>KSH: 2,100</h1>
       </div>
       <div className="content-page">
         <button className="shop_button" onClick={openModalHandler}>
