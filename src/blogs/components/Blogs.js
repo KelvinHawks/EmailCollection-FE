@@ -12,7 +12,7 @@ function Blogs(props) {
               key={blog.id}
               image={blog.image}
               header={blog.header}
-              pdf={blog.pdf}
+              paragraph={blog.paragraph}
             />
           );
         })}
